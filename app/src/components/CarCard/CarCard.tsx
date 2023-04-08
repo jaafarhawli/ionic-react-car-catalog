@@ -15,6 +15,7 @@ type Props = {
   car: Car;
   onBuy?: (car: Car) => void;
   onRemove?: (car: Car) => void;
+  cardType?: string;
 };
 
 const CarCard = (props: Props) => {
@@ -51,7 +52,7 @@ const CarCard = (props: Props) => {
 
   return (
     <>
-      <IonCard>
+      <IonCard color={props.cardType === "bought" ? "success" : props.cardType === "removed" ? "danger" : undefined}>
         <IonCardHeader>
           <IonCardTitle>{props.car.name}</IonCardTitle>
           <IonCardSubtitle>{props.car.model}</IonCardSubtitle>

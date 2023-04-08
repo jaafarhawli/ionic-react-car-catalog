@@ -9,11 +9,17 @@ const RemovedCars: React.FC = () => {
   return (
     <IonPage>
       <Title title="Removed Cars" />
-      <IonContent fullscreen>
-        {removedCars.map((car) => {
-          return <CarCard key={car.id} car={car} />;
-        })}
-      </IonContent>
+      {removedCars.length <= 0 ? (
+        <IonContent fullscreen className="ion-padding ion-text-center">
+          <p>No cars removed</p>
+        </IonContent>
+      ) : (
+        <IonContent fullscreen>
+          {removedCars.map((car) => (
+            <CarCard key={car.id} car={car} cardType="removed" />
+          ))}
+        </IonContent>
+      )}
     </IonPage>
   );
 };

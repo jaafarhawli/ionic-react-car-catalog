@@ -90,7 +90,7 @@ const Home: React.FC = () => {
           }`}
           color={`${toastAction === "buy" ? "success" : "danger"}`}
           onDidDismiss={() => setOpenToast(false)}
-          duration={2000}
+          duration={1000}
         />
       </IonContent>
     </IonPage>
