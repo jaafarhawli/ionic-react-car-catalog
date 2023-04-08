@@ -3,6 +3,7 @@ import { IonApp, IonContent, setupIonicReact } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import BottomTabs from "./components/BottomTabs/BottomTabs";
 import Menu from "./components/Menu/Menu";
+import ContextProvider from "./context/ContextProvider";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -23,16 +24,13 @@ import "@ionic/react/css/display.css";
 /* Theme variables */
 import "./theme/variables.css";
 import "./App.css";
-import BoughtContextProvider from "./context/BoughtContext";
-import RemovedContextProvider from "./context/RemovedContext";
 
 setupIonicReact();
 
 const App: React.FC = () => {
   return (
     <IonApp>
-      <RemovedContextProvider>
-      <BoughtContextProvider>
+      <ContextProvider>
         <IonReactRouter>
           <Menu />
           <IonContent id="main">
@@ -45,8 +43,7 @@ const App: React.FC = () => {
             />
           </IonContent>
         </IonReactRouter>
-      </BoughtContextProvider>
-      </RemovedContextProvider>
+      </ContextProvider>
     </IonApp>
   );
 };
