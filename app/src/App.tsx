@@ -24,12 +24,14 @@ import "@ionic/react/css/display.css";
 import "./theme/variables.css";
 import "./App.css";
 import BoughtContextProvider from "./context/BoughtContext";
+import RemovedContextProvider from "./context/RemovedContext";
 
 setupIonicReact();
 
 const App: React.FC = () => {
   return (
     <IonApp>
+      <RemovedContextProvider>
       <BoughtContextProvider>
         <IonReactRouter>
           <Menu />
@@ -44,6 +46,7 @@ const App: React.FC = () => {
           </IonContent>
         </IonReactRouter>
       </BoughtContextProvider>
+      </RemovedContextProvider>
     </IonApp>
   );
 };

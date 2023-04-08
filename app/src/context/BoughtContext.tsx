@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { Car } from "./cars";
+import { Car } from "./Cars";
 
 interface BoughtContextInterface {
   boughtCars: Car[];
