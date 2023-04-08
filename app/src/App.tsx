@@ -1,7 +1,8 @@
 import { Redirect, Route } from "react-router-dom";
-import { IonApp, setupIonicReact } from "@ionic/react";
+import { IonApp, IonContent, setupIonicReact } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import BottomTabs from "./components/BottomTabs/BottomTabs";
+import Menu from "./components/Menu/Menu";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -21,18 +22,27 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
+import "./App.css";
 
 setupIonicReact();
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <Route exact path="/">
-        <Redirect to="/home" />
-      </Route>
-      <Route path={["/home", "/bought", "/removed"]} component={BottomTabs} />
-    </IonReactRouter>
-  </IonApp>
-);
+const App: React.FC = () => {
+  return (
+    <IonApp>
+      <IonReactRouter>
+        <Menu />
+        <IonContent id="main">
+          <Route exact path="/">
+            <Redirect to="/home" />
+          </Route>
+          <Route
+            path={["/home", "/bought", "/removed"]}
+            component={BottomTabs}
+          />
+        </IonContent>
+      </IonReactRouter>
+    </IonApp>
+  );
+};
 
 export default App;

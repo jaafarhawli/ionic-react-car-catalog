@@ -1,6 +1,13 @@
-import { IonRouterOutlet, IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel } from "@ionic/react";
+import {
+  IonRouterOutlet,
+  IonTabs,
+  IonTabBar,
+  IonTabButton,
+  IonIcon,
+  IonLabel,
+} from "@ionic/react";
 import { Redirect, Route } from "react-router-dom";
-import { home, cart, trash } from 'ionicons/icons';
+import { home, cart, trash } from "ionicons/icons";
 import Home from "../../pages/Home/Home";
 import Bought from "../../pages/Bought/Bought";
 import Removed from "../../pages/Removed/Removed";
@@ -8,12 +15,12 @@ import Removed from "../../pages/Removed/Removed";
 const BottomTabs: React.FC = () => {
   return (
     <IonTabs>
-      <IonRouterOutlet>
+      <IonRouterOutlet animated={false}>
         <Redirect exact path="/" to="/home" />
 
         <Route path="/home" render={() => <Home />} exact={true} />
         <Route path="/bought" render={() => <Bought />} exact={true} />
-        <Route path="/removed" render={() => <Removed />} exact={true} />        
+        <Route path="/removed" render={() => <Removed />} exact={true} />
       </IonRouterOutlet>
 
       <IonTabBar slot="bottom">
@@ -35,4 +42,3 @@ const BottomTabs: React.FC = () => {
 };
 
 export default BottomTabs;
-

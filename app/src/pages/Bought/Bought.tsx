@@ -1,26 +1,17 @@
-import {
-    IonContent,
-    IonHeader,
-    IonPage,
-    IonTitle,
-    IonToolbar,
-  } from "@ionic/react";
-  import ExploreContainer from "../../components/ExploreContainer";
-  import "./Bought.css";
-  
-  const Bought: React.FC = () => {
-    return (
-      <IonPage>
-        <IonHeader>
-          <IonToolbar>
-            <IonTitle>Bought</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <IonContent fullscreen>   
-          <ExploreContainer />
-        </IonContent>
-      </IonPage>
-    );
-  };
+import { IonContent, IonPage } from "@ionic/react";
+import ExploreContainer from "../../components/ExploreContainer";
+import "./Bought.css";
+import Title from "../../components/Title/Title";
 
-export default Bought
+const Bought: React.FC = () => {
+  return (
+    <IonPage>
+      <Title title="Bought" />
+      <IonContent fullscreen>
+        <ExploreContainer />
+      </IonContent>
+    </IonPage>
+  );
+};
+
+export default Bought;
