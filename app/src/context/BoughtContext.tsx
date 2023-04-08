@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import { Car } from "./Cars";
 
 interface BoughtContextInterface {
@@ -16,11 +16,23 @@ export const BoughtContext = createContext<BoughtContextInterface>({
 });
 
 export const BoughtContextProvider = ({ children }: Props) => {
-  const [boughtCars, setBoughtCars] = useState<Car[]>([]);
+  const storedBoughtCars = localStorage.getItem("boughtCars");
+  const initialBoughtCars = storedBoughtCars
+    ? JSON.parse(storedBoughtCars)
+    : [];
+  const [boughtCars, setBoughtCars] = useState<Car[]>(initialBoughtCars);
 
   const addToBoughtCars = (newCar: Car) => {
     setBoughtCars([...boughtCars, newCar]);
+    localStorage.setItem("boughtCars", JSON.stringify([...boughtCars, newCar]));
   };
+
+  useEffect(() => {
+    const storedBoughtCars = localStorage.getItem("boughtCars");
+    if (storedBoughtCars) {
+      setBoughtCars(JSON.parse(storedBoughtCars));
+    }
+  }, []);
 
   return (
     <BoughtContext.Provider value={{ boughtCars, addToBoughtCars }}>

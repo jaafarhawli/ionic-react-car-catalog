@@ -17,7 +17,7 @@ const Menu: React.FC = () => {
   return (
     <IonMenu side="start" type="overlay" contentId="main">
       <IonHeader>
-        <IonToolbar color="tertiary">
+        <IonToolbar >
           <IonMenuToggle>
             <IonTitle>Menu</IonTitle>
           </IonMenuToggle>

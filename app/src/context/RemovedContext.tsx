@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import { Car } from "./Cars";
 
 interface RemovedContextInterface {
@@ -16,11 +16,26 @@ export const RemovedContext = createContext<RemovedContextInterface>({
 });
 
 export const RemovedContextProvider = ({ children }: Props) => {
-  const [removedCars, setRemovedCars] = useState<Car[]>([]);
+  const storedRemovedCars = localStorage.getItem("removedCars");
+  const initialRemovedCars = storedRemovedCars
+    ? JSON.parse(storedRemovedCars)
+    : [];
+  const [removedCars, setRemovedCars] = useState<Car[]>(initialRemovedCars);
 
   const addToRemovedCars = (removedCar: Car) => {
     setRemovedCars([...removedCars, removedCar]);
+    localStorage.setItem(
+      "removedCars",
+      JSON.stringify([...removedCars, removedCar])
+    );
   };
+
+  useEffect(() => {
+    const storedRemovedCars = localStorage.getItem("removedCars");
+    if (storedRemovedCars) {
+      setRemovedCars(JSON.parse(storedRemovedCars));
+    }
+  }, []);
 
   return (
     <RemovedContext.Provider value={{ removedCars, addToRemovedCars }}>

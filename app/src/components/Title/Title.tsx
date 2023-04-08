@@ -8,9 +8,9 @@ type Props = {
 const Title = (props: Props) => {
   return (
     <IonHeader>
-      <IonToolbar style={{ padding: "10px" }}>
+      <IonToolbar style={{ padding: "10px" }} color="primary">
         <IonMenuButton slot="start" />
-        <IonTitle >{props.title}</IonTitle>
+        <IonTitle>{props.title}</IonTitle>
       </IonToolbar>
     </IonHeader>
   );
