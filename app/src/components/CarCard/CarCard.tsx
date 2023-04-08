@@ -7,9 +7,9 @@ import {
   IonCardContent,
   IonText,
   IonButton,
-  IonActionSheet,
 } from "@ionic/react";
 import { Car } from "../../context/Cars";
+import ActionSheet from "../ActionSheet/ActionSheet";
 
 type Props = {
   car: Car;
@@ -19,8 +19,10 @@ type Props = {
 
 const CarCard = (props: Props) => {
   const [showActionSheet, setShowActionSheet] = useState(false);
+  const [action, setAction] = useState<string>("");
 
   const handleRemove = () => {
+    setAction("remove");
     setShowActionSheet(true);
   };
 
@@ -32,6 +34,7 @@ const CarCard = (props: Props) => {
   };
 
   const handleBuy = () => {
+    setAction("buy");
     setShowActionSheet(true);
   };
 
@@ -75,29 +78,14 @@ const CarCard = (props: Props) => {
           </IonButton>
         )}
       </IonCard>
-
-      <IonActionSheet
+      <ActionSheet
+        onDismiss={handleCancel}
         isOpen={showActionSheet}
-        onDidDismiss={handleCancel}
-        buttons={[
-          {
-            text: "Cancel",
-            role: "cancel",
-          },
-          {
-            text: "Buy",
-            handler: handleConfirmBuy,
-          },
-          {
-            text: "Remove",
-            role: "destructive",
-            handler: handleConfirmRemove,
-          },
-        ]}
+        action={action}
+        handler={action === "buy" ? handleConfirmBuy : handleConfirmRemove}
       />
     </>
   );
 };
 
 export default CarCard;
-
