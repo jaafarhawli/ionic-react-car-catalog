@@ -6,6 +6,7 @@ import {
   IonButton,
   IonToolbar,
   IonButtons,
+  IonToast
 } from "@ionic/react";
 import "./Home.css";
 import Title from "../../components/Title/Title";
@@ -22,18 +23,24 @@ const Home: React.FC = () => {
   const [search, setSearch] = useState<boolean>(false);
   const [filteredCars, setFilteredCars] = useState<Car[]>([]);
   const [selectedYear, setSelectedYear] = useState<number | null>(null);
+  const [openToast, setOpenToast] = useState<boolean>(false);
+  const [toastAction, setToastAction] = useState<string>("");
   const { cars, removeCarFromCarsArray } = useContext(CarsContext);
   const { addToBoughtCars } = useContext(BoughtContext);
   const { addToRemovedCars } = useContext(RemovedContext);
-
+  
   const buyCar = (car: Car) => {
     addToBoughtCars(car);
     removeCarFromCarsArray(car.id);
+    setToastAction("buy");
+    setOpenToast(true);
   };
 
   const removeCar = (car: Car) => {
     addToRemovedCars(car);
     removeCarFromCarsArray(car.id);
+    setToastAction("remove");
+    setOpenToast(true);
   };
 
   const closeSearchModal = () => {
@@ -85,6 +92,13 @@ const Home: React.FC = () => {
             />
           );
         })}
+        <IonToast
+          isOpen={openToast}
+          message={`${toastAction==="buy" ? "Car Bought Successfully" : "Car Removed Successfully"}`}
+          color={`${toastAction==="buy" ? "success" : "danger"}`}
+          onDidDismiss={() => setOpenToast(false)}
+          duration={2000}
+        ></IonToast>
       </IonContent>
     </IonPage>
   );
