@@ -10,7 +10,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-export const BoughtContext = createContext<BoughtContextInterface>({
+export const BoughtCarsContext = createContext<BoughtContextInterface>({
   boughtCars: [],
   addToBoughtCars: () => {},
 });
@@ -35,9 +35,9 @@ export const BoughtContextProvider = ({ children }: Props) => {
   }, []);
 
   return (
-    <BoughtContext.Provider value={{ boughtCars, addToBoughtCars }}>
+    <BoughtCarsContext.Provider value={{ boughtCars, addToBoughtCars }}>
       {children}
-    </BoughtContext.Provider>
+    </BoughtCarsContext.Provider>
   );
 };
 

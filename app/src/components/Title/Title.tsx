@@ -1,4 +1,3 @@
-import React from "react";
 import { IonHeader, IonToolbar, IonMenuButton, IonTitle } from "@ionic/react";
 
 type Props = {

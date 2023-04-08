@@ -10,7 +10,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-export const RemovedContext = createContext<RemovedContextInterface>({
+export const RemovedCarsContext = createContext<RemovedContextInterface>({
   removedCars: [],
   addToRemovedCars: () => {},
 });
@@ -38,9 +38,9 @@ export const RemovedContextProvider = ({ children }: Props) => {
   }, []);
 
   return (
-    <RemovedContext.Provider value={{ removedCars, addToRemovedCars }}>
+    <RemovedCarsContext.Provider value={{ removedCars, addToRemovedCars }}>
       {children}
-    </RemovedContext.Provider>
+    </RemovedCarsContext.Provider>
   );
 };
 

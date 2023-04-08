@@ -6,29 +6,25 @@ import {
   IonButton,
   IonToolbar,
   IonButtons,
-  IonToast
+  IonToast,
 } from "@ionic/react";
-import "./Home.css";
-import Title from "../../components/Title/Title";
-import CarCard from "../../components/CarCard/CarCard";
+import { Title, CarCard, Modal, YearsSelectList } from "../../components";
 import { CarsContext } from "../../context/CarsContext";
-import { BoughtContext } from "../../context/BoughtContext";
-import { RemovedContext } from "../../context/RemovedContext";
+import { BoughtCarsContext } from "../../context/BoughtCarsContext";
+import { RemovedCarsContext } from "../../context/RemovedCarsContext";
 import { Car } from "../../context/Cars";
 import { filterOutline } from "ionicons/icons";
-import Modal from "../../components/Modal/Modal";
-import YearsSelectList from "../../components/YearsSelectList/YearsSelectList";
 
 const Home: React.FC = () => {
-  const [search, setSearch] = useState<boolean>(false);
+  const [search, setSearch] = useState(false);
   const [filteredCars, setFilteredCars] = useState<Car[]>([]);
   const [selectedYear, setSelectedYear] = useState<number | null>(null);
-  const [openToast, setOpenToast] = useState<boolean>(false);
-  const [toastAction, setToastAction] = useState<string>("");
+  const [openToast, setOpenToast] = useState(false);
+  const [toastAction, setToastAction] = useState("");
   const { cars, removeCarFromCarsArray } = useContext(CarsContext);
-  const { addToBoughtCars } = useContext(BoughtContext);
-  const { addToRemovedCars } = useContext(RemovedContext);
-  
+  const { addToBoughtCars } = useContext(BoughtCarsContext);
+  const { addToRemovedCars } = useContext(RemovedCarsContext);
+
   const buyCar = (car: Car) => {
     addToBoughtCars(car);
     removeCarFromCarsArray(car.id);
@@ -82,23 +78,20 @@ const Home: React.FC = () => {
             </IonButton>
           </IonButtons>
         </IonToolbar>
-        {cars.map((car) => {
-          return (
-            <CarCard
-              key={car.id}
-              car={car}
-              onBuy={buyCar}
-              onRemove={removeCar}
-            />
-          );
-        })}
+        {cars.map((car) => (
+          <CarCard key={car.id} car={car} onBuy={buyCar} onRemove={removeCar} />
+        ))}
         <IonToast
           isOpen={openToast}
-          message={`${toastAction==="buy" ? "Car Bought Successfully" : "Car Removed Successfully"}`}
-          color={`${toastAction==="buy" ? "success" : "danger"}`}
+          message={`${
+            toastAction === "buy"
+              ? "Car Bought Successfully"
+              : "Car Removed Successfully"
+          }`}
+          color={`${toastAction === "buy" ? "success" : "danger"}`}
           onDidDismiss={() => setOpenToast(false)}
           duration={2000}
-        ></IonToast>
+        />
       </IonContent>
     </IonPage>
   );

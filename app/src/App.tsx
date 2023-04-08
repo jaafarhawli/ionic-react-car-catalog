@@ -1,8 +1,7 @@
 import { Redirect, Route } from "react-router-dom";
 import { IonApp, IonContent, setupIonicReact } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-import BottomTabs from "./components/BottomTabs/BottomTabs";
-import Menu from "./components/Menu/Menu";
+import { Menu, BottomTabs } from "./components";
 import ContextProvider from "./context/ContextProvider";
 
 /* Core CSS required for Ionic components to work properly */

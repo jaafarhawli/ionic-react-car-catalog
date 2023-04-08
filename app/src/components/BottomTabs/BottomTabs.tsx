@@ -8,9 +8,7 @@ import {
 } from "@ionic/react";
 import { Redirect, Route } from "react-router-dom";
 import { home, cart, trash } from "ionicons/icons";
-import Home from "../../pages/Home/Home";
-import Bought from "../../pages/Bought/Bought";
-import Removed from "../../pages/Removed/Removed";
+import { Home, BoughtCars, RemovedCars } from "../../pages";
 
 const BottomTabs: React.FC = () => {
   return (
@@ -19,8 +17,8 @@ const BottomTabs: React.FC = () => {
         <Redirect exact path="/" to="/home" />
 
         <Route path="/home" render={() => <Home />} exact={true} />
-        <Route path="/bought" render={() => <Bought />} exact={true} />
-        <Route path="/removed" render={() => <Removed />} exact={true} />
+        <Route path="/bought" render={() => <BoughtCars />} exact={true} />
+        <Route path="/removed" render={() => <RemovedCars />} exact={true} />
       </IonRouterOutlet>
 
       <IonTabBar slot="bottom">

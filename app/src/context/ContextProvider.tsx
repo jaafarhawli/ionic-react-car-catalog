@@ -1,6 +1,6 @@
 import CarsContextProvider from "./CarsContext";
-import RemovedContextProvider from "./RemovedContext";
-import BoughtContextProvider from "./BoughtContext";
+import RemovedContextProvider from "./RemovedCarsContext";
+import BoughtContextProvider from "./BoughtCarsContext";
 
 interface Props {
   children: React.ReactNode;

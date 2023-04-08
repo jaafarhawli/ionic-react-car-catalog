@@ -11,13 +11,13 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
-import { closeOutline, home, cart, trash } from "ionicons/icons";
+import { home, cart, trash } from "ionicons/icons";
 
 const Menu: React.FC = () => {
   return (
     <IonMenu side="start" type="overlay" contentId="main">
       <IonHeader>
-        <IonToolbar >
+        <IonToolbar>
           <IonMenuToggle>
             <IonTitle>Menu</IonTitle>
           </IonMenuToggle>
