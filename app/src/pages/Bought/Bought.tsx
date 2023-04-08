@@ -11,7 +11,7 @@ const Bought: React.FC = () => {
   
   return (
     <IonPage>
-      <Title title="Bought" />
+      <Title title="Bought Cars" />
       <IonContent fullscreen>
       {boughtCars.map((car) => {
           return (
