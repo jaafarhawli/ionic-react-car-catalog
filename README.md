@@ -1,6 +1,6 @@
 # Ionic React Car Catalog
 
-This is a mobile app built using the Ionic Framework (ReactJS) that allows users to browse through a catalog of cars and buy or remove them from the feed. The app includes a side menu and a footer navigation bar.
+This is a mobile app built using the [Ionic Framework](https://ionicframework.com/) with [ReactJS](https://legacy.reactjs.org/) that allows users to browse through a catalog of cars and buy or remove them from the feed. The app includes a side menu and a footer navigation bar.
 
 ## Usage
 
