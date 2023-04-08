@@ -3,7 +3,7 @@ import { Car } from "./Cars";
 
 interface RemovedContextInterface {
   removedCars: Car[];
-  removeCar: (removedCar: Car) => void;
+  addToRemovedCars: (removedCar: Car) => void;
 }
 
 interface Props {
@@ -12,18 +12,18 @@ interface Props {
 
 export const BoughtContext = createContext<RemovedContextInterface>({
   removedCars: [],
-  removeCar: () => {},
+  addToRemovedCars: () => {},
 });
 
 export const RemovedContextProvider = ({ children }: Props) => {
   const [removedCars, setRemovedCars] = useState<Car[]>([]);
 
-  const removeCar = (removedCar: Car) => {
+  const addToRemovedCars = (removedCar: Car) => {
     setRemovedCars([...removedCars, removedCar]);
   };
 
   return (
-    <BoughtContext.Provider value={{ removedCars, removeCar }}>
+    <BoughtContext.Provider value={{ removedCars, addToRemovedCars }}>
       {children}
     </BoughtContext.Provider>
   );

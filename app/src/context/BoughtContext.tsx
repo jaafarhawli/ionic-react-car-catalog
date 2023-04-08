@@ -3,7 +3,7 @@ import { Car } from "./Cars";
 
 interface BoughtContextInterface {
   boughtCars: Car[];
-  buyCar: (newCars: Car) => void;
+  addToBoughtCars: (newCars: Car) => void;
 }
 
 interface Props {
@@ -12,18 +12,18 @@ interface Props {
 
 export const BoughtContext = createContext<BoughtContextInterface>({
   boughtCars: [],
-  buyCar: () => {},
+  addToBoughtCars: () => {},
 });
 
 export const BoughtContextProvider = ({ children }: Props) => {
   const [boughtCars, setBoughtCars] = useState<Car[]>([]);
 
-  const buyCar = (newCar: Car) => {
+  const addToBoughtCars = (newCar: Car) => {
     setBoughtCars([...boughtCars, newCar]);
   };
 
   return (
-    <BoughtContext.Provider value={{ boughtCars, buyCar }}>
+    <BoughtContext.Provider value={{ boughtCars, addToBoughtCars }}>
       {children}
     </BoughtContext.Provider>
   );
