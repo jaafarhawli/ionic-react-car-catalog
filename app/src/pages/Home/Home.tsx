@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { IonContent, IonPage, IonIcon, IonButton, IonToolbar, IonButtons } from "@ionic/react";
 import "./Home.css";
 import Title from "../../components/Title/Title";
@@ -8,8 +8,11 @@ import { BoughtContext } from "../../context/BoughtContext";
 import { RemovedContext } from "../../context/RemovedContext";
 import { Car } from "../../context/Cars";
 import { filterOutline } from 'ionicons/icons';
+import Modal from "../../components/Modal/Modal";
 
 const Home: React.FC = () => {
+  const [search, setSearch] = useState<boolean>(false);
+  const [filteredCars, setFilteredCars] = useState<Car[]>([])
   const { cars, removeCarFromCarsArray } = useContext(CarsContext);
   const { addToBoughtCars } = useContext(BoughtContext);
   const { addToRemovedCars } = useContext(RemovedContext);
@@ -24,13 +27,24 @@ const Home: React.FC = () => {
     removeCarFromCarsArray(car.id);
   };
 
+  const closeSearchModal =  () => {
+    setSearch(false);
+  }
+
+  const openSearchModal = () => {
+    setSearch(true);
+  }
+
   return (
     <IonPage>
       <Title title="Home" />
       <IonContent fullscreen>
+        <Modal isOpen={search} onClose={closeSearchModal} title="Filter Cars">
+          Test
+        </Modal>
       <IonToolbar color="transparent">
       <IonButtons slot="end">
-        <IonButton slot="end">
+        <IonButton slot="end"  onClick={openSearchModal}>
           <IonIcon icon={filterOutline} size="large" />
         </IonButton>
       </IonButtons>

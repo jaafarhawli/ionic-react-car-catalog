@@ -14,7 +14,7 @@ const Modal = (props: Props) => {
             <IonToolbar>
               <IonTitle>{props.title}</IonTitle>
               <IonButtons slot="end">
-                <IonButton onClick={() => props.onClose}>Close</IonButton>
+                <IonButton color="danger" onClick={() => props.onClose()}>Close</IonButton>
               </IonButtons>
             </IonToolbar>
           </IonHeader>
