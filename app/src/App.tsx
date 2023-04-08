@@ -23,24 +23,27 @@ import "@ionic/react/css/display.css";
 /* Theme variables */
 import "./theme/variables.css";
 import "./App.css";
+import BoughtContextProvider from "./context/BoughtContext";
 
 setupIonicReact();
 
 const App: React.FC = () => {
   return (
     <IonApp>
-      <IonReactRouter>
-        <Menu />
-        <IonContent id="main">
-          <Route exact path="/">
-            <Redirect to="/home" />
-          </Route>
-          <Route
-            path={["/home", "/bought", "/removed"]}
-            component={BottomTabs}
-          />
-        </IonContent>
-      </IonReactRouter>
+      <BoughtContextProvider>
+        <IonReactRouter>
+          <Menu />
+          <IonContent id="main">
+            <Route exact path="/">
+              <Redirect to="/home" />
+            </Route>
+            <Route
+              path={["/home", "/bought", "/removed"]}
+              component={BottomTabs}
+            />
+          </IonContent>
+        </IonReactRouter>
+      </BoughtContextProvider>
     </IonApp>
   );
 };

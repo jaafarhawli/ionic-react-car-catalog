@@ -1,4 +1,11 @@
-export const cars = [
+export type Car = {
+  name: string;
+  description: string;
+  model: string;
+  year: number;
+}
+
+export const Cars = [
     {
       name: "Audi A4",
       description: "Luxury sedan with all-wheel drive",
