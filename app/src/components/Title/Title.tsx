@@ -10,7 +10,7 @@ const Title = (props: Props) => {
     <IonHeader>
       <IonToolbar style={{ padding: "10px" }}>
         <IonMenuButton slot="start" />
-        <IonTitle>{props.title}</IonTitle>
+        <IonTitle >{props.title}</IonTitle>
       </IonToolbar>
     </IonHeader>
   );

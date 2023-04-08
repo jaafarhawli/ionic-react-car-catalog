@@ -1,33 +1,43 @@
-import React from 'react'
-import { IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonText, IonButton } from '@ionic/react'
+import React from "react";
+import {
+  IonCard,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardSubtitle,
+  IonCardContent,
+  IonText,
+  IonButton,
+} from "@ionic/react";
+import { Car } from "../../context/Cars";
 
 type Props = {
-    name: string,
-    model: string,
-    description: string,
-    year: number,
-}
+  car: Car;
+  onBuy: (car: Car) => void;
+  onRemove: (car: Car) => void;
+};
 
 const CarCard = (props: Props) => {
   return (
     <IonCard>
       <IonCardHeader>
-        <IonCardTitle>{props.name}</IonCardTitle>
-        <IonCardSubtitle>{props.model}</IonCardSubtitle>
+        <IonCardTitle>{props.car.name}</IonCardTitle>
+        <IonCardSubtitle>{props.car.model}</IonCardSubtitle>
       </IonCardHeader>
 
       <IonCardContent>
         <IonText>
-            <p>{props.description}</p>
+          <p>{props.car.description}</p>
         </IonText>
         <IonText>
-            <p>{props.year}</p>
+          <p>{props.car.year}</p>
         </IonText>
       </IonCardContent>
-      <IonButton fill="clear">Buy</IonButton>
-      <IonButton fill="clear" color="danger">Remove</IonButton>
+      <IonButton fill="clear" onClick={() => props.onBuy(props.car)}>Buy</IonButton>
+      <IonButton fill="clear" color="danger" onClick={() => props.onRemove(props.car)}>
+        Remove
+      </IonButton>
     </IonCard>
-  )
-}
+  );
+};
 
-export default CarCard
+export default CarCard;

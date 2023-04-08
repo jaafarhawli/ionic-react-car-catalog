@@ -3,7 +3,7 @@ import { Car } from "./Cars";
 
 interface BoughtContextInterface {
   boughtCars: Car[];
-  addToBoughtCars: (newCars: Car) => void;
+  addToBoughtCars: (newCar: Car) => void;
 }
 
 interface Props {

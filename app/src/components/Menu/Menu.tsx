@@ -19,7 +19,6 @@ const Menu: React.FC = () => {
       <IonHeader>
         <IonToolbar color="tertiary">
           <IonMenuToggle>
-            <IonIcon icon={closeOutline} size="large" className="ion-padding" />
             <IonTitle>Menu</IonTitle>
           </IonMenuToggle>
         </IonToolbar>
