@@ -37,6 +37,7 @@ const Home: React.FC = () => {
   };
 
   const closeSearchModal = () => {
+    setFilteredCars([]);
     setSearch(false);
   };
 
