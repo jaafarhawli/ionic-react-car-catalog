@@ -12,8 +12,8 @@ import { Car } from "../../context/Cars";
 
 type Props = {
   car: Car;
-  onBuy: (car: Car) => void;
-  onRemove: (car: Car) => void;
+  onBuy?: (car: Car) => void;
+  onRemove?: (car: Car) => void;
 };
 
 const CarCard = (props: Props) => {
@@ -32,12 +32,13 @@ const CarCard = (props: Props) => {
           <p>{props.car.year}</p>
         </IonText>
       </IonCardContent>
-      <IonButton fill="clear" onClick={() => props.onBuy(props.car)}>Buy</IonButton>
-      <IonButton fill="clear" color="danger" onClick={() => props.onRemove(props.car)}>
+      {props.onBuy && <IonButton fill="clear" color="success" onClick={() => props.onBuy ? props.onBuy(props.car) : null}>Buy</IonButton>}
+      {props.onRemove && <IonButton fill="clear" color="danger" onClick={() => props.onRemove? props.onRemove(props.car) : null}>
         Remove
-      </IonButton>
+      </IonButton>}
     </IonCard>
   );
 };
+
 
 export default CarCard;
