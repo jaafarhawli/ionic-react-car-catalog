@@ -9,10 +9,12 @@ import { RemovedContext } from "../../context/RemovedContext";
 import { Car } from "../../context/Cars";
 import { filterOutline } from 'ionicons/icons';
 import Modal from "../../components/Modal/Modal";
+import YearsSelectList from "../../components/YearsSelectList/YearsSelectList";
 
 const Home: React.FC = () => {
   const [search, setSearch] = useState<boolean>(false);
-  const [filteredCars, setFilteredCars] = useState<Car[]>([])
+  const [filteredCars, setFilteredCars] = useState<Car[]>([]);
+  const [selectedYear, setSelectedYear] = useState<number | null>(null);
   const { cars, removeCarFromCarsArray } = useContext(CarsContext);
   const { addToBoughtCars } = useContext(BoughtContext);
   const { addToRemovedCars } = useContext(RemovedContext);
@@ -35,12 +37,16 @@ const Home: React.FC = () => {
     setSearch(true);
   }
 
+  const selectYear = (year: number) => {
+    setSelectedYear(year);
+  }
+
   return (
     <IonPage>
       <Title title="Home" />
       <IonContent fullscreen>
         <Modal isOpen={search} onClose={closeSearchModal} title="Filter Cars">
-          Test
+          <YearsSelectList onSelect={selectYear} />
         </Modal>
       <IonToolbar color="transparent">
       <IonButtons slot="end">
